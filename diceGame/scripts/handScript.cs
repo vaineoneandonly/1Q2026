@@ -43,4 +43,14 @@ public class Hand
         //I don't really like this. Just here in case it's needed.
         dices.RemoveAt(i);
     }
+
+    public void showDices()
+    {
+        int i = 0;
+        foreach (Dice d in dices)
+        {
+            Console.WriteLine($"Dice {i+1} >>> {d}");
+            ++i;
+        }
+    }
 }

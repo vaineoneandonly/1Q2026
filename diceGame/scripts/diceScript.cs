@@ -27,6 +27,7 @@ public class Dice
                 case DiceModifier.BabySteps:
                     if (upperFaceValue < sideCount/2)
                     {
+                        Console.Write("Baby Steps triggered! ");
                         upperFaceValue += 1;
                     }
                     break;
@@ -34,6 +35,7 @@ public class Dice
                 case DiceModifier.MiddleOfTheRoad:
                     if (upperFaceValue == sideCount/2)
                     {
+                        Console.Write("Middle Of The Road triggered! ");
                         upperFaceValue *= 2;
                     }
                     break;
@@ -41,10 +43,31 @@ public class Dice
                 case DiceModifier.HydrogenBomb:
                     if (upperFaceValue < sideCount/2)
                     {
+                        Console.Write("Hydrogen Bomb triggered! ");
                         upperFaceValue = 0;
                     }
                     break;
             }
         }
+        Console.WriteLine();
     }
+    
+    public override string ToString()
+    {
+        string n = $"sides: {sideCount} - luck: {luck} - active modifiers: ";
+        
+        if (modifierList.Count == 0)
+        {
+            n += "None";
+        }
+        else
+        {
+            foreach (DiceModifier m in modifierList)
+            {
+                n += m + " - ";
+            }
+        }
+        return n;
+    }
+
 }
